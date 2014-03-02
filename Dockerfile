@@ -6,7 +6,7 @@
 # > docker build github.com/nkratzke/containerdart -t containerdart
 # > docker run containerdart
 
-FROM ubuntu stackbrew/ubuntu:13.10
+FROM stackbrew/ubuntu:13.10
 MAINTAINER Nane Kratzke <nane@nkode.io>
 
 # Install Dart SDK. Do not touch this until you know what you are doing.
