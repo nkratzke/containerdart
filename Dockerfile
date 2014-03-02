@@ -3,11 +3,16 @@
 # You should adapt this Dockerfile to your needs.
 #
 # This file is hosted on github. Therefore you can start it in docker like this:
-# > docker build github.com/nkratzke/containerdart -t containerdart
+# > docker build -t containerdart github.com/nkratzke/containerdart
 # > docker run containerdart
 
 FROM stackbrew/ubuntu:13.10
 MAINTAINER Nane Kratzke <nane@nkode.io>
+
+# Get the command apt-add-repository working. Needed to install Dart SDK.
+# Do not touch this until you know what you are doing.
+RUN apt-get update
+RUN apt-get install -y software-properties-common python-software-properties
 
 # Install Dart SDK. Do not touch this until you know what you are doing.
 # We do not install darteditor nor dartium because this is a server container.
