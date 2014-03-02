@@ -27,7 +27,7 @@ ADD pubspec.yaml /opt/containerdart/pubspec.yaml
 ADD bin /opt/containerdart/bin
 ADD build /opt/containerdart/build
 RUN cd /opt/containerdart
-RUN pub get
+# RUN pub get
 RUN pub build
 
 # Expose port 8080. You should change it to the port(s) your app is serving on.
