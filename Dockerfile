@@ -23,6 +23,7 @@ RUN apt-get install -y dartsdk
 
 # Install the dart server app. Do not touch this until you know what you are doing.
 # Copy the bin and build directory to the container.
+ADD pubspec.yaml /opt/containerdart/pubspec.yaml
 ADD bin /opt/containerdart/bin
 ADD build /opt/containerdart/build
 RUN cd /opt/containerdart
