@@ -1,0 +1,7 @@
+name: containerdart
+version: 0.0.1
+author: Nane Kratzke <nane@nkode.io>
+description: A sample docker container for Dart server applications. Adapt it to your own needs.
+homepage: https://github.com/nkratzke/containerdart
+dependencies:
+  start: any

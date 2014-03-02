@@ -1,0 +1,30 @@
+# Install a dart container for demonstration purposes.
+# Your dart server app will be accessible via HTTP on port 8080. The port can be changed.
+# You should adapt this Dockerfile to your needs.
+#
+# This file is hosted on github. Therefore you can start it in docker like this:
+# > docker build github.com/nkratzke/containerdart -t containerdart
+# > docker run containerdart
+
+FROM ubuntu stackbrew/ubuntu:13.10
+MAINTAINER Nane Kratzke <nane@nkode.io>
+
+# Install Dart SDK. Do not touch this until you know what you are doing.
+# We do not install darteditor nor dartium because this is a server container.
+# See: http://askubuntu.com/questions/377233/how-to-install-google-dart-in-ubuntu
+RUN apt-add-repository ppa:hachre/dart
+RUN apt-get -y update
+RUN apt-get install -y dartsdk
+
+# Install the dart server app. Do not touch this until you know what you are doing.
+# Copy the bin and build directory to the container.
+ADD bin /opt/containerdart
+ADD build /opt/containerdart
+
+# Expose port 8080. You should change it to the port(s) your app is serving on.
+EXPOSE 8080
+
+# Entrypoint. Whenever the container is started the following command is executed in your container.
+# In most cases it simply starts your app.
+# You should change it to the dart file of your app.
+ENTRYPOINT ["dart", "/opt/containerdart/bin/httpserver.dart"]
