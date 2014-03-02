@@ -23,8 +23,8 @@ RUN apt-get install -y dartsdk
 
 # Install the dart server app. Do not touch this until you know what you are doing.
 # Copy the bin and build directory to the container.
-ADD bin /opt/containerdart
-ADD build /opt/containerdart
+ADD bin /opt/containerdart/bin
+ADD build /opt/containerdart/build
 
 # Expose port 8080. You should change it to the port(s) your app is serving on.
 EXPOSE 8080
