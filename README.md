@@ -31,7 +31,7 @@ docker run -p 8080:8080 -d containerdart
 
 First command build a new image from a Dockerfile provided in the referenced github repository (this here). The repository is a normal dart repository being processable by pub but has addtionally a so called Dockerfile in it. This Dockerfile defines the image for a container. Therefore 
 
-- it is based on a Ubuntu 13.10 system,
+- it extends a barebone Ubuntu 13.10 system,
 - installs additionally Dart SDK,
 - copies the application files into the container (bin and web directory),
 - starts the build process on the system,
