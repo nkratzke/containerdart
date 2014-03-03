@@ -10,7 +10,7 @@ Container Dart
 
 Container Dart shows how this can be accomplished for [Dart][dart] server applications.
 
-Container Dart is just a simple HTML page which is be provided by a very simple [Dart][dart] HTTP server using the [Sinatra][sinatra] inspired web framework [Start][start].
+Container Dart is just a simple HTML page which is provided by a very simple static [Dart][dart] HTTP server using the [Sinatra][sinatra] inspired web framework [Start][start].
 
 ```Dart
 import 'package:start/start.dart';
