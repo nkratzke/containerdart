@@ -33,13 +33,14 @@ First command build a new image from a Dockerfile provided in the referenced git
 
 - it is based on a Ubuntu 13.10 system,
 - installs additionally Dart SDK,
-- copies the application files into the container (bin and web directory)
+- copies the application files into the container (bin and web directory),
+- starts the build process on the system,
 - defines an entrypoint (which is beeing called when the container is started by docker)
 - and finally name it 'containerdart'.
 
-Second command starts the container as a demon and binds the internal port 8080 to the host port 8080 (it is also possible to map the port to any other port number, e.g. 80).
+Second command starts the container as a daemon and binds the internal port 8080 to the host port 8080 (it is also possible to map the exposed container port 8080 to any other port number, e.g. 80).
 
-Thats all. All the magic is done by the following Dockerfile, which of course can be adapted to your Dart application.
+__Thats all.__ All the magic is done docker executing the following Dockerfile, which of course can be adapted to your Dart application.
 
 ```Dockerfile
 # Install a dart container for demonstration purposes.
