@@ -37,4 +37,4 @@ EXPOSE 8080
 # In most cases it simply starts your app.
 # You should change it to the dart file of your app.
 WORKDIR /opt/containerdart/bin
-ENTRYPOINT ["dart", "httpserver.dart"]
+ENTRYPOINT ["dart", "httpserver2.dart"]
