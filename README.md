@@ -16,7 +16,7 @@ Container Dart is just a simple HTML page which is be provided by a very simple 
 import 'package:start/start.dart';
 
 main() {
-  start(port: 8080).then((Server app) {
+  start(host: '0.0.0.0', port: 8080).then((Server app) {
     app.static('../build/web');
   });
 }
