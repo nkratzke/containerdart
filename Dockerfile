@@ -26,8 +26,9 @@ RUN apt-get install -y dartsdk
 ADD pubspec.yaml /opt/containerdart/pubspec.yaml
 ADD bin /opt/containerdart/bin
 ADD web /opt/containerdart/web
-RUN cd /opt/containerdart/; pub get
-RUN cd /opt/containerdart/; pub build
+WORKDIR /opt/containerdart
+RUN pub get
+RUN pub build
 
 # Expose port 8080. You should change it to the port(s) your app is serving on.
 EXPOSE 8080
@@ -35,4 +36,5 @@ EXPOSE 8080
 # Entrypoint. Whenever the container is started the following command is executed in your container.
 # In most cases it simply starts your app.
 # You should change it to the dart file of your app.
-ENTRYPOINT ["dart", "/opt/containerdart/bin/httpserver.dart"]
+WORKDIR /opt/containerdart/bin
+ENTRYPOINT ["dart", "httpserver.dart"]
