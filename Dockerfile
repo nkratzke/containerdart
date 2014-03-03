@@ -25,6 +25,7 @@ RUN apt-get install -y dartsdk
 # Copy the bin and build directory to the container.
 ADD pubspec.yaml /opt/containerdart/pubspec.yaml
 ADD bin /opt/containerdart/bin
+RUN cd /opt/containerdart/; pub get
 RUN cd /opt/containerdart/; pub build
 
 # Expose port 8080. You should change it to the port(s) your app is serving on.
