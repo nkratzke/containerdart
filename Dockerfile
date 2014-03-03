@@ -4,7 +4,7 @@
 #
 # This file is hosted on github. Therefore you can start it in docker like this:
 # > docker build -t containerdart github.com/nkratzke/containerdart
-# > docker run containerdart
+# > docker run -d containerdart
 
 FROM stackbrew/ubuntu:13.10
 MAINTAINER Nane Kratzke <nane@nkode.io>
