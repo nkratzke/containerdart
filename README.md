@@ -22,7 +22,24 @@ main() {
 }
 ```
 
-This server is hosted in a docker image. This image is a Ubuntu 13.10 based docker image which beeing created by the following Dockerfile
+This server runs in a docker container and can be started on every system which has docker installed like this:
+
+```
+docker build -t containerdart github.com/nkratzke/containerdart
+docker run -p 8080:8080 -d containerdart
+```
+
+First command build a new image from a Dockerfile provided in the referenced github repository (this here). The repository is a normal dart repository being processable by pub but has addtionally a so called Dockerfile in it. This Dockerfile defines the image for a container. Therefore 
+
+- it is based on a Ubuntu 13.10 system,
+- installs additionally Dart SDK,
+- copies the application files into the container (bin and web directory)
+- defines an entrypoint (which is beeing called when the container is started by docker)
+- and finally name it 'containerdart'.
+
+Second command starts the container as a demon and binds the internal port 8080 to the host port 8080 (it is also possible to map the port to any other port number, e.g. 80).
+
+Thats all. All the magic is done by the following Dockerfile, which of course can be adapted to your Dart application.
 
 ```
 # Install a dart container for demonstration purposes.
@@ -64,11 +81,4 @@ EXPOSE 8080
 # In most cases it simply starts your app.
 # You should change it to the dart file of your app.
 ENTRYPOINT ["dart", "/opt/containerdart/bin/httpserver.dart"]
-```
-
-If you are on a system with installed docker you can run the following two commands to start a webserver on port 8080.
-
-```
-docker build -t containerdart github.com/nkratzke/containerdart
-docker run -p 8080:8080 -d containerdart
 ```
