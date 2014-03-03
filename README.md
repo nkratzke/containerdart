@@ -24,7 +24,7 @@ main() {
 
 This server runs in a docker container and can be started on every system which has docker installed like this:
 
-```
+```shell
 docker build -t containerdart github.com/nkratzke/containerdart
 docker run -p 8080:8080 -d containerdart
 ```
@@ -41,7 +41,7 @@ Second command starts the container as a demon and binds the internal port 8080 
 
 Thats all. All the magic is done by the following Dockerfile, which of course can be adapted to your Dart application.
 
-```
+```Dockerfile
 # Install a dart container for demonstration purposes.
 # Your dart server app will be accessible via HTTP on port 8080. The port can be changed.
 # You should adapt this Dockerfile to your needs.
