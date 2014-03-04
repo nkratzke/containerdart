@@ -24,10 +24,10 @@ RUN apt-get install -y dartsdk
 # Install the dart server app. Do not touch this until you know what you are doing.
 # Copy the bin and web directory to the container. Then run "pub get" and "pub build"
 # to build the app.
-ADD pubspec.yaml /opt/containerdart/pubspec.yaml
-ADD bin /opt/containerdart/bin
-ADD web /opt/containerdart/web
-WORKDIR /opt/containerdart
+ADD pubspec.yaml /opt/dockers/containerdart/pubspec.yaml
+ADD bin /opt/dockers/containerdart/bin
+ADD web /opt/dockers/containerdart/web
+WORKDIR /opt/dockers/containerdart
 RUN pub get
 RUN pub build
 
@@ -37,5 +37,5 @@ EXPOSE 8080
 # Entrypoint. Whenever the container is started the following command is executed in your container.
 # In most cases it simply starts your app.
 # You should change it to the dart file of your app.
-WORKDIR /opt/containerdart/bin
+WORKDIR /opt/dockers/containerdart/bin
 ENTRYPOINT ["dart", "httpserver.dart"]
