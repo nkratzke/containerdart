@@ -10,10 +10,6 @@
 FROM stackbrew/ubuntu:13.10
 MAINTAINER Nane Kratzke <nane@nkode.io>
 
-# Specifies where the dart app is installed. Modify to your needs.
-ENV INSTALL_DIR /opt/dockers/containerdart
-ENV MAINDART bin/httpserver.dart
-
 # Install Dart SDK. Do not touch this until you know what you are doing.
 # We do not install darteditor nor dartium because this is a server container.
 # See: http://askubuntu.com/questions/377233/how-to-install-google-dart-in-ubuntu
@@ -31,25 +27,23 @@ RUN apt-get install -y dartsdk
 # - https://www.dartlang.org/tools/pub/
 # - https://www.dartlang.org/tools/pub/package-layout.html
 # - https://www.dartlang.org/tools/pub/transformers
-ADD pubspec.yaml $INSTALL_DIR/pubspec.yaml
-# ADD asset       $INSTALL_DIR/asset     # comment in if you need assets for working app
-# ADD benchmark   $INSTALL_DIR/benchmark # comment in if you need benchmarks to run pub build
-# ADD doc         $INSTALL_DIR/doc       # comment in if you need docs to run pub build
-# ADD example     $INSTALL_DIR/example   # comment in if you need examples to run pub build
-# ADD test        $INSTALL_DIR/test      # comment in if you need test to run pub build
-# ADD tool        $INSTALL_DIR/tool      # comment in if you need tool to run pub build
-# ADD lib         $INSTALL_DIR/lib       # comment in if you need lib to run pub build
-ADD bin          $INSTALL_DIR/bin        # likely that you need this every time
-ADD web          $INSTALL_DIR/web        # comment in if you need web for working app
-ADD containerbuild.sh /containerbuild.sh
-RUN chmod +x /containerbuild.sh
-RUN /containerbuild.sh
+ADD pubspec.yaml  /container/pubspec.yaml
+# ADD asset       /container/asset     # comment in if you need assets for working app
+# ADD benchmark   /container/benchmark # comment in if you need benchmarks to run pub build
+# ADD doc         /container/doc       # comment in if you need docs to run pub build
+# ADD example     /container/example   # comment in if you need examples to run pub build
+# ADD test        /container/test      # comment in if you need test to run pub build
+# ADD tool        /container/tool      # comment in if you need tool to run pub build
+# ADD lib         /container/lib       # comment in if you need lib to run pub build
+ADD bin          /container/bin        # likely that you need this every time
+ADD web          /container/web        # comment out if you do not need web for working app
+WORKDIR /container
+RUN pub build
 
 # Expose port 8080. You should change it to the port(s) your app is serving on.
 EXPOSE 8080
 
 # Entrypoint. Whenever the container is started the following command is executed in your container.
 # In most cases it simply starts your app.
-ADD containerstart.sh /containerstart.sh
-RUN chmod +x /containerstart.sh
-ENTRYPOINT ["/containerstart.sh"]
+ENTRYPOINT ["dart"]
+CMD ["bin/httpserver.dart"]           # change this to your app starting dart
