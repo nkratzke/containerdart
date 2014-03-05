@@ -36,13 +36,13 @@ First command build a new image from a Dockerfile provided in the referenced git
 - copies the application files into the container (bin and web directory),
 - starts the build process on the system,
 - defines an entrypoint (which is beeing called when the container is started by docker)
-- and finally name it 'containerdart'.
+- and finally tag it _containerdart_.
 
 Second command starts the container as a daemon and binds the internal port 8080 to the host port 8888 (it is also possible to map the exposed container port 8080 to any other port number, e.g. 80).
 
 Now your container is accessible via [http://localhost:8888](http://localhost:8888).
 
-__Thats all.__ All the magic is done by docker processing the following Dockerfile which can be adapted to your Dart application.
+__Thats all.__ All the magic is done by docker processing the following Dockerfile which can be easily adapted to your Dart application.
 
 ```Shell
 # Install a dart container for demonstration purposes.
