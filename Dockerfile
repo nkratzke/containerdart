@@ -64,4 +64,6 @@ EXPOSE 8080
 
 # Entrypoint. Whenever the container is started the following command is executed in your container.
 # In most cases it simply starts your app.
-ENTRYPOINT ["dart", "bin/httpserver.dart"]
+WORKDIR /container/bin
+ENTRYPOINT ["dart"] 
+CMD ["httpserver.dart"]
