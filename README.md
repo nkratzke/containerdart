@@ -1,11 +1,6 @@
 Container Dart
 ==============
 
-[docker]: https://www.docker.io/
-[dart]: https://www.dartlang.org/
-[start]: https://github.com/lvivski/start
-[sinatra]: http://www.sinatrarb.com/
-
 [Docker][docker] is an open-source engine that automates the deployment of applications as portable and self-sufficient containers that will run virtually anywhere. Dockerized applications reduce configuration efforts and obstacles for administrators. Applications can be provided in a configured, self-sufficient and frictionless way.
 
 Container Dart shows how this can be accomplished for [Dart][dart] server applications.
@@ -119,3 +114,14 @@ ENTRYPOINT ["dart"]
 # Change this to your starting dart.
 CMD ["httpserver.dart"]
 ```
+
+### Remarks regarding docker (on non linux systems)
+
+If docker is used on a non linux system like Mac OS X it is likely that docker uses [VirtualBox][virtualbox] under the hood. In theses cases you must configure port forwarding in virtual box. So if you are exposing port 3000 in your docker container mapping it to port 8080 for the outside world you must forward port 8080 to 8080 to the docker-vm in virtualbox. How to do this is explained [here][virtualbox-portforward].
+
+[docker]: https://www.docker.io/
+[dart]: https://www.dartlang.org/
+[start]: https://github.com/lvivski/start
+[sinatra]: http://www.sinatrarb.com/
+[virtualbox]: https://www.virtualbox.org/
+[virtualbox-portforward]: http://www.virtualbox.org/manual/ch06.html#natforward
