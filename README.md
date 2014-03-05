@@ -40,6 +40,8 @@ First command build a new image from a Dockerfile provided in the referenced git
 
 Second command starts the container as a daemon and binds the internal port 8080 to the host port 8888 (it is also possible to map the exposed container port 8080 to any other port number, e.g. 80).
 
+Now your container is accessible via [http://localhost:8888](http://localhost:8888).
+
 __Thats all.__ All the magic is done by docker processing the following Dockerfile which can be adapted to your Dart application.
 
 ```Shell
