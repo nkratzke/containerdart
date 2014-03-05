@@ -38,7 +38,7 @@ First command build a new image from a Dockerfile provided in the referenced git
 - defines an entrypoint (which is beeing called when the container is started by docker)
 - and finally name it 'containerdart'.
 
-Second command starts the container as a daemon and binds the internal port 8080 to the host port 8080 (it is also possible to map the exposed container port 8080 to any other port number, e.g. 80).
+Second command starts the container as a daemon and binds the internal port 8080 to the host port 8888 (it is also possible to map the exposed container port 8080 to any other port number, e.g. 80).
 
 __Thats all.__ All the magic is done by docker processing the following Dockerfile which can be adapted to your Dart application.
 
