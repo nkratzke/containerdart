@@ -12,6 +12,7 @@ MAINTAINER Nane Kratzke <nane@nkode.io>
 
 # Specifies where the dart app is installed. Modify to your needs.
 ENV INSTALL_DIR /opt/dockers/containerdart
+ENV MAINDART bin/httpserver.dart
 
 # Install Dart SDK. Do not touch this until you know what you are doing.
 # We do not install darteditor nor dartium because this is a server container.
@@ -40,12 +41,13 @@ ADD pubspec.yaml $INSTALL_DIR/pubspec.yaml
 # ADD lib         $INSTALL_DIR/lib       # comment in if you need lib to run pub build
 ADD bin          $INSTALL_DIR/bin        # likely that you need this every time
 ADD web          $INSTALL_DIR/web        # comment in if you need web for working app
-RUN cd $INSTALL_DIR; pub build
+ADD containerbuild.sh
+RUN containerbuild.sh
 
 # Expose port 8080. You should change it to the port(s) your app is serving on.
 EXPOSE 8080
 
 # Entrypoint. Whenever the container is started the following command is executed in your container.
 # In most cases it simply starts your app.
-ENTRYPOINT ["dart"]
-CMD ["$INSTALL_DIR/httpserver.dart"]     # Changes this to your application file
+ADD containerstart.sh
+ENTRYPOINT ["containerstart.sh"]
