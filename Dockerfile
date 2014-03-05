@@ -42,6 +42,7 @@ ADD pubspec.yaml $INSTALL_DIR/pubspec.yaml
 ADD bin          $INSTALL_DIR/bin        # likely that you need this every time
 ADD web          $INSTALL_DIR/web        # comment in if you need web for working app
 ADD containerbuild.sh /containerbuild.sh
+RUN chmod +x /containerbuild.sh
 RUN /containerbuild.sh
 
 # Expose port 8080. You should change it to the port(s) your app is serving on.
@@ -50,4 +51,5 @@ EXPOSE 8080
 # Entrypoint. Whenever the container is started the following command is executed in your container.
 # In most cases it simply starts your app.
 ADD containerstart.sh /containerstart.sh
+RUN chmod +x /containerstart.sh
 ENTRYPOINT ["/containerstart.sh"]
