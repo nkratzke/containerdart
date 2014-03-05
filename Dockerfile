@@ -40,7 +40,7 @@ ADD pubspec.yaml $INSTALL_DIR/pubspec.yaml
 # ADD lib         $INSTALL_DIR/lib       # comment in if you need lib to run pub build
 ADD bin          $INSTALL_DIR/bin        # likely that you need this every time
 ADD web          $INSTALL_DIR/web        # comment in if you need web for working app
-WORKDIR          $INSTALL_DIR
+WORKDIR          INSTALL_DIR
 RUN pub build
 
 # Expose port 8080. You should change it to the port(s) your app is serving on.
