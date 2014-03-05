@@ -35,9 +35,10 @@ ADD pubspec.yaml  /container/pubspec.yaml
 # ADD test        /container/test      # comment in if you need test to run pub build
 # ADD tool        /container/tool      # comment in if you need tool to run pub build
 # ADD lib         /container/lib       # comment in if you need lib to run pub build
-ADD bin          /container/bin        # likely that you need this every time
-ADD web          /container/web        # comment out if you do not need web for working app
+ADD bin          /container/bin       
+ADD web          /container/web
 WORKDIR /container
+RUN pub get
 RUN pub build
 
 # Expose port 8080. You should change it to the port(s) your app is serving on.
@@ -46,4 +47,4 @@ EXPOSE 8080
 # Entrypoint. Whenever the container is started the following command is executed in your container.
 # In most cases it simply starts your app.
 ENTRYPOINT ["dart"]
-CMD ["bin/httpserver.dart"]           # change this to your app starting dart
+CMD ["bin/httpserver.dart"]
