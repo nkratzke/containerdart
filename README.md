@@ -26,7 +26,7 @@ This server runs in a docker container and can be started on every system which 
 
 ```Shell
 docker build -t containerdart github.com/nkratzke/containerdart
-docker run -p 8080:8080 -d containerdart
+docker run -p 8888:8080 -d containerdart
 ```
 
 First command build a new image from a Dockerfile provided in the referenced github repository (this here). The repository is a normal dart repository being processable by pub but has addtionally a so called Dockerfile in it. This Dockerfile defines the image for a container. Therefore 
