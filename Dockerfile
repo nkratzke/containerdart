@@ -47,5 +47,5 @@ EXPOSE 8080
 
 # Entrypoint. Whenever the container is started the following command is executed in your container.
 # In most cases it simply starts your app.
-# You should change it to the dart file of your app.
-ENTRYPOINT ["dart", "$INSTALL_DIR/httpserver.dart"]
+ENTRYPOINT ["dart"]
+CMD ["$INSTALL_DIR/httpserver.dart"]     # Changes this to your application file
