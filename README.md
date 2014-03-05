@@ -117,7 +117,7 @@ CMD ["httpserver.dart"]
 
 ### Remarks regarding docker (on non linux systems)
 
-If docker is used on a non linux system like Mac OS X it is likely that docker uses [VirtualBox][virtualbox] under the hood. In theses cases you must configure port forwarding in virtual box. So if you are exposing port 3000 in your docker container mapping it to port 8080 for the outside world you must forward port 8080 to 8080 to the docker-vm in virtualbox. How to do this is explained [here][virtualbox-portforward].
+If docker is used on a non linux system like Mac OS X it is likely that docker uses [VirtualBox][virtualbox] under the hood. In theses cases you must configure port forwarding in virtual box. So if you are exposing port 8080 in your docker container mapping it to port 8888 for the outside world you must forward host port 8888 to docker-vm port 8888 in virtualbox. How to do this is explained [here][virtualbox-portforward].
 
 [docker]: https://www.docker.io/
 [dart]: https://www.dartlang.org/
